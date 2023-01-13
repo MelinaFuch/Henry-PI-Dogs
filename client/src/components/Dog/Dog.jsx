@@ -1,14 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Dog = ({image, name, temperament, weight}) => {
-    const temperaments = Array.isArray(temperament) ? temperament.map(temp => temp.dataValues.name) : temperament;
+const Dog = ({image, name, temperament, weight, id }) => {
+    //const temperaments = !created ? temperament : map(temp => temp.name);
     
     return (
         <div>
-            <h3>{name}</h3>
-            <img src={image} alt={name} width='250px' height='250px'/>
-            <h5>{weight}</h5>
-            <h5>{temperaments}</h5>
+            <Link to={`/dogs/${id}`}>
+                <h3>{name}</h3>
+                <img src={image} alt={name} width='250px' height='250px'/>
+                <h5>Weight: {weight}</h5>
+                <span>Temperaments: {temperament}</span>
+            </Link>
         </div>
     )
 }

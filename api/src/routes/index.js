@@ -48,11 +48,11 @@ router.get('/temperaments', async (req, res) => {
   try{    
     const dbTemperaments = await Temperament.findAll();
 
-    if (dbTemperaments) return res.status(200).send(dbTemperaments);
-    else {
+    if (!dbTemperaments.length) {
       dbTemperaments = getTemperaments();
       return res.status(200).send(dbTemperaments);
     }
+      return res.status(200).send(dbTemperaments);
   } catch(error){
     res.status(404).send({error: error.message})
 }  

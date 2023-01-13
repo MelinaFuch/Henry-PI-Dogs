@@ -10,6 +10,7 @@ import {
 } from '../../redux/actions';
 import Dog from '../Dog/Dog';
 import Paginated from "../Paginated/Paginated";
+import SearchBar from "../SearchBar";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -64,7 +65,9 @@ const Home = () => {
 
     return (
         <div>
-            <Link to='/create_dog'>Create your dogson</Link>
+            <Link to='/createdog'>
+                <button>Create dog</button>
+            </Link>
             <h1>aun vivo... por ahora</h1>
             <button onClick={event => handleOnClick(event)}>Reload Page</button>
             
@@ -95,15 +98,17 @@ const Home = () => {
                     allDogs={allDogs?.length}
                     paginated={paginated}
                 />
-
+                <SearchBar/>
+            
             {
                 currentDogs?.map(dog => {
                     return (
                         <Dog
                         key={dog.id}
+                        id={dog.id}
                         image={dog.image}
                         name={dog.name}
-                        temperament={dog.temperament}
+                        temperament={!dog.created ? `${dog.temperament} ` : dog.Temperaments?.map(temp => `${temp.name} `)}
                         weight={dog.weight}
                         />
                     )
