@@ -7,8 +7,8 @@ export const POST_DOGS = 'POST_DOGS';
 export const GET_ALL_TEMPERAMENTS = 'GET_ALL_TEMPERAMENTS';
 export const FILTER_BY_TEMPERAMENTS = 'FILTER_BY_TEMPERAMENTS';
 export const FILTER_CREATED = 'FILTER_CREATED';
-export const ORDER_BY_NAME = 'ORDER_BY_NAME';
-export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT';
+export const ORDER_BY = 'ORDER_BY';
+export const ERROR = 'ERROR';
 
 export const getAllDogs = () => {
     return async function (dispatch) {
@@ -21,7 +21,10 @@ export const getAllDogs = () => {
                 payload: allDogs
             })
         } catch(error) {
-            console.log(error.message);
+            return {
+                type: ERROR,
+                payload: error
+            }
         }
     }
 }
@@ -53,7 +56,7 @@ export const getDetail = (id) => {
                 payload: dog
             })
         } catch(error) {
-            console.log(error);
+            console.log(error.message);
         }
     }
 }
@@ -109,21 +112,10 @@ export const filterCreated = (created) => {
     }
 }
 
-export const orderByName = (order) => {
+export const orderBy = (order) => {
     try {
         return {
-            type: ORDER_BY_NAME,
-            payload: order
-        }
-    } catch(error) {
-        console.log(error.message);
-    }
-}
-
-export const orderByWeight = (order) => {
-    try {
-        return {
-            type: ORDER_BY_WEIGHT,
+            type: ORDER_BY,
             payload: order
         }
     } catch(error) {

@@ -1,0 +1,84 @@
+.conteinerAll {
+	background-color:rgba(255, 174, 81, 0.712);
+    border-radius: 14px;
+    border: 2px solid rgb(255, 174, 81);
+    width: 350px;
+    height: 360px;
+    display: inline-flex;
+    margin: 13px 10px 40px 10px;
+    padding: 17px 2px 17px 2px;
+    padding-right: 0%;
+    padding-left: 0%;
+    padding-bottom: 13%;
+    align-items: center;
+    justify-content: flex-start;
+    background-size: cover;
+    flex-direction: column;
+}
+
+.conteinerAll:hover {
+    border: 2px solid #e95e0e;
+    background-color: #f58544d5;
+    cursor: pointer;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.Name{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    margin-top: 5px;
+    font-family: 'Helvetica', sans-serif;
+	font-weight: 10px;
+    font-size: 18px;
+    color: rgb(155, 0, 0);
+    text-decoration: none;
+}
+
+.Image{
+    border-radius: 13px;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.conteinerData{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nameData{
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 25px;
+    font-size: 16px;
+    margin-top: 10%;
+    color: rgb(172, 77, 0);
+}
+
+.conteinerMin_max{
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 0%;
+}
+
+.data{
+    font-size: 14px;
+    color: rgb(90, 48, 24);
+    align-items: baseline;
+    display: flex;
+    justify-content: center;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 40px;
+}

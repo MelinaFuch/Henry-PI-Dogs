@@ -1,0 +1,32 @@
+.nav{
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner{
+    justify-content: center;
+}
+
+.numbers{
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 10px;    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #e95e0e;
+    border-radius: 10px; 
+    padding: 7px; /*espacio alrededor texto*/
+    background-color: #f3cfb9;
+    
+    color: #000000; /*color texto*/
+    text-decoration: none; 
+    font-family: 'Helvetica', sans-serif; 
+    font-size: small;
+}
+.numbers:hover {
+    border: 1px solid #ee894e;
+    color: #000000;
+    background-color: rgba(243, 115, 77, 0.74);
+    cursor: pointer;
+    font-family: 'Helvetica', sans-serif; 
+}

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
+import style from './Home.module.css';
 import { 
     getAllDogs, 
     getAllTemperaments, 
     filterTemperaments, 
     filterCreated, 
-    orderByName
+    orderBy
 } from '../../redux/actions';
 import Dog from '../Dog/Dog';
 import Paginated from "../Paginated/Paginated";
@@ -25,8 +26,6 @@ const Home = () => {
     const indexLastDog = currentPage * dogsPerPage;
     const indexFirstDog = indexLastDog - dogsPerPage;
     const currentDogs = allDogs?.slice(indexFirstDog, indexLastDog);
-
-    console.log(currentDogs)
 
     const paginated = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -57,7 +56,7 @@ const Home = () => {
     const handleOrder = (event) => {
         event.preventDefault()
         const {value} = event.target;
-        dispatch(orderByName(value));
+        dispatch(orderBy(value));
 
         setCurrentPage(1);
         setOrder(`Sorted ${value}`);
@@ -65,41 +64,52 @@ const Home = () => {
 
     return (
         <div>
-            <Link to='/createdog'>
-                <button>Create dog</button>
-            </Link>
-            <h1>aun vivo... por ahora</h1>
-            <button onClick={event => handleOnClick(event)}>Reload Page</button>
-            
+            <div className={style.conteiner}>
+                <Link className={style.link_detail} to='/'>
+                    <button className={style.buttons}>← Back</button>
+                </Link>
+                <Link className={style.link_detail} to='/createdog'>
+                    <button className={style.buttons}>Create dog</button>
+                </Link>
+                <button className={style.buttons} onClick={event => handleOnClick(event)}>Reload Page</button>
+            </div>
+
+            <h2 className={style.title}>List of puppies</h2>
+
             <div>
-                <select onChange={event => handleFilterCreated(event)}>
-                    <option value='all'>All dogs</option>
-                    <option value='bds'>Created</option>
-                    <option value='api'>Existing</option>
+                <select className={style.select} onChange={event => handleFilterCreated(event)}>
+                    <option className={style.options} value='all'>All dogs</option>
+                    <option className={style.options} value='bds'>Created</option>
+                    <option className={style.options} value='api'>Existing</option>
                 </select>
 
-                <select onChange={event => handleFilterTemperaments(event)}>
-                    <option value='temp'>All temperaments</option>
+                <select className={style.select} onChange={event => handleFilterTemperaments(event)}>
+                    <option className={style.options} value='temp'>All temperaments</option>
                     {
                         allTemperaments?.map(temp => {
                             return (
                                 <option key={temp.id} value={temp.name}>{temp.name}</option>
-                            )})
-                    }
+                                )})
+                            }
                 </select>
 
-                <select onChange={event => handleOrder(event)}>
-                    <option value='asc'>Ascending</option>
-                    <option value='desc'>Descending</option>
-                </select>
+                
+                <select className={style.select} onChange={event => handleOrder(event)}>
+                    <option className={style.options} defaultValue>Order by</option>
 
+                    <option className={style.options} value='asc'>A - Z</option>
+                    <option className={style.options} value='desc'>Z - A</option>
+                
+                    <option className={style.options} value='min'>Minimum weight</option>
+                    <option className={style.options} value='max'>Maximum weight</option>
+                </select>
                 <Paginated
                     dogsPerPage={dogsPerPage}
                     allDogs={allDogs?.length}
                     paginated={paginated}
                 />
+
                 <SearchBar/>
-            
             {
                 currentDogs?.map(dog => {
                     return (
@@ -109,12 +119,18 @@ const Home = () => {
                         image={dog.image}
                         name={dog.name}
                         temperament={!dog.created ? `${dog.temperament} ` : dog.Temperaments?.map(temp => `${temp.name} `)}
-                        weight={dog.weight}
+                        weight_min={dog.weight_min}
+                        weight_max={dog.weight_max}
                         />
                     )
                 })
             }               
-            </div>            
+            </div>
+            <Paginated
+                    dogsPerPage={dogsPerPage}
+                    allDogs={allDogs?.length}
+                    paginated={paginated}
+            />
         </div>
     )
 }

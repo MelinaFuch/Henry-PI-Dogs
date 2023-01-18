@@ -6,8 +6,7 @@ import {
     GET_ALL_TEMPERAMENTS, 
     FILTER_BY_TEMPERAMENTS, 
     FILTER_CREATED, 
-    ORDER_BY_NAME,
- //   ORDER_BY_WEIGHT,
+    ORDER_BY,
 } from './actions';
 
 const inicialState = {
@@ -67,30 +66,40 @@ const rootReducer = (state = inicialState, action) => {
                 allDogs: action.payload === 'all' ? totaldogs : filterByCreated
             }
 
-        case ORDER_BY_NAME:
-            const orderByName = action.payload === 'desc' ? 
-                state.allDogs.sort((a,b) => {
-                    if (a.name > b.name) return -1
-                    if (a.name < b.name) return 1
-                    return 0
-                }) :
-                state.allDogs.sort((a,b) => {
-                    if (a.name > b.name) return 1
-                    if (a.name < b.name) return -1
-                    return 0
-                })
-                
+        case ORDER_BY:
+            let orderBy = [...state.allDogs];
+            orderBy = orderBy.sort((a, b) => {
+                switch (action.payload) {
+                    case 'desc':
+                        if (a.name.toLowerCase() > b.name.toLowerCase()) return -1
+                        if (a.name < b.name) return 1 
+                        return 0
+
+                    case 'asc':
+                        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
+                        if (a.name > b.name) return 1
+                        return 0
+
+                    case 'min':
+                        if (a.weight_min < b.weight_min) return -1
+                        if (a.weight_min > b.weight_min) return 1
+                        
+                        return 0
+
+                    case 'max':
+                        if (a.weight_max > b.weight_max) return -1
+                        if (a.weight_max < b.weight_max) return 1
+                        return 0
+
+                    default:
+                        return {...state}
+                }
+            })
+
             return {
                 ...state,
-                allDogs: orderByName
+                allDogs: orderBy
             }
-
-        //case ORDER_BY_WEIGHT:
-          //  const orderByWeight = '';
-            //return {
-              //  ...state,
-                //allDogs: orderByWeight
-         //   }
 
         default:
             return {

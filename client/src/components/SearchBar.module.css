@@ -1,0 +1,30 @@
+.Input {
+    border: 2px solid rgba(255, 117, 4, 0.747);
+    border-radius: 5px;
+    background-color: #ffffff9d;
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    width: max-content;
+}
+.button {
+    border: 1px solid #ee894e; 
+    padding: 10px; /*espacio alrededor texto*/
+    background-color: rgb(243, 106, 27); 
+    color: #000000; /*color texto*/
+    text-decoration: none; 
+    font-family: 'Helvetica', sans-serif; 
+    font-size: 15px;
+    border-radius: 10px; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.button:hover {
+    color: #000000;
+    border: 1px solid #e95e0e;
+    background-color: #ffb78d;
+    cursor: pointer;
+    font-family: 'Helvetica', sans-serif; 
+}

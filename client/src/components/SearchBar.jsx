@@ -1,28 +1,32 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { getNameDogs } from "../redux/actions";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import style from './SearchBar.module.css';
+import { getAllDogs, getNameDogs } from "../redux/actions";
 
 const SearchBar = () => {
     const dispatch = useDispatch();
-    const [name, setName] = useState('');
+    const allDogs = useSelector(state => state.allDogs);
 
-    const handleInputChange = (event) => {
-        const {value} = event.target;
-        event.preventDefault();
-        setName(value);
-        console.log(value);
-    }
+    const [name, setName] = useState("");
+
+    useEffect(() => {
+        dispatch(getAllDogs())
+    }, [dispatch])
 
     const handleSubmit = (event) => {
-        event.preventDefault();
         dispatch(getNameDogs(name))
-        
+    }
+
+    const handleChange = (event) => {
+        const {value} = event.target;
+        setName(value);
     }
 
     return (
         <div>
-            <input type='text' placeholder="Search..." onChange={event => handleInputChange(event)}/>
-            <button type="submit" onClick={event => handleSubmit(event)}>Search</button>
+            <input className={style.Input} type='text' placeholder="Search..." onChange={event => handleChange(event)}/>
+            <button className={style.button} type='button' onClick={(event)=>handleSubmit(event)}>Search</button>
         </div>
     )
 }
