@@ -4,7 +4,7 @@ function validate ({name, image, height_min, height_max, weight_min, weight_max,
     if (!name) errors.name = 'Required name';
     else if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/.test(name)) errors.name = "Invalid name";
     else if (/^\s/.test(name)) errors.name = 'The name cannot start with a blank space';
-    else if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]{3,20}$/.test(name)) errors.name = 'Length between 3 and 15 characters';
+    else if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]{3,15}$/.test(name)) errors.name = 'Length between 3 and 15 characters';
 
     if (!weight_min) errors.weight_min = 'Required minimum weight';
     else if (parseInt(weight_min) <= 0) errors.weight_min = 'Minimum weight cannot be 0 or less';

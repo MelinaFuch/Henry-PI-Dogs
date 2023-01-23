@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import style from './Home.module.css';
-import { 
+import {
     getAllDogs, 
     getAllTemperaments, 
     filterTemperaments, 
@@ -11,7 +11,7 @@ import {
 } from '../../redux/actions';
 import Dog from '../Dog/Dog';
 import Paginated from "../Paginated/Paginated";
-import SearchBar from "../SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [dogsPerPage, setDogsPerPage] = useState(8);
     const [order, setOrder] = useState('');
+    const [filter, setFilter] = useState('');
 
     const indexLastDog = currentPage * dogsPerPage;
     const indexFirstDog = indexLastDog - dogsPerPage;
@@ -32,34 +33,39 @@ const Home = () => {
     }
 
     useEffect(()=>{
-        dispatch(getAllDogs())
-        dispatch(getAllTemperaments())
+        dispatch(getAllDogs());
+        dispatch(getAllTemperaments());
     }, [dispatch])
 
     const handleOnClick = (event) => {
-        event.preventDefault()
-        dispatch(getAllDogs())
+        event.preventDefault();
+        dispatch(getAllDogs());
+        dispatch(getAllTemperaments());
+        setCurrentPage(1)
     }
 
     const handleFilterTemperaments = (event) => {
-        event.preventDefault()
+        event.preventDefault();
         const {value} = event.target;
         dispatch(filterTemperaments(value));
+        setCurrentPage(1);
+        setFilter(`Filtrado ${value}`);
     }
 
     const handleFilterCreated = (event) => {
         event.preventDefault()
         const {value} = event.target;
         dispatch(filterCreated(value));
+        setCurrentPage(1)
+        setFilter(`Filtrado ${value}`);
     }
 
     const handleOrder = (event) => {
         event.preventDefault()
         const {value} = event.target;
         dispatch(orderBy(value));
-
         setCurrentPage(1);
-        setOrder(`Sorted ${value}`);
+        setOrder(`Ordenado ${value}`);
     }
 
     return (
@@ -130,6 +136,7 @@ const Home = () => {
                     dogsPerPage={dogsPerPage}
                     allDogs={allDogs?.length}
                     paginated={paginated}
+                    currentPage={currentPage}
             />
         </div>
     )

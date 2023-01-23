@@ -23,4 +23,3 @@ const Paginated= ({dogsPerPage, allDogs, paginated}) => {
 }
 
 export default Paginated;
-//<li className="number" key={number}></li>

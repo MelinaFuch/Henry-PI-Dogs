@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
 import style from './SearchBar.module.css';
-import { getAllDogs, getNameDogs } from "../redux/actions";
+import { getAllDogs, getNameDogs, resetSearch } from "../../redux/actions";
 
 const SearchBar = () => {
     const dispatch = useDispatch();
-    const allDogs = useSelector(state => state.allDogs);
 
     const [name, setName] = useState("");
 
@@ -15,7 +13,9 @@ const SearchBar = () => {
     }, [dispatch])
 
     const handleSubmit = (event) => {
-        dispatch(getNameDogs(name))
+        event.preventDefault();
+        dispatch(getNameDogs(name));
+        setName('');
     }
 
     const handleChange = (event) => {
@@ -25,8 +25,8 @@ const SearchBar = () => {
 
     return (
         <div>
-            <input className={style.Input} type='text' placeholder="Search..." onChange={event => handleChange(event)}/>
-            <button className={style.button} type='button' onClick={(event)=>handleSubmit(event)}>Search</button>
+            <input className={style.Input} type='text' value={name} placeholder="Search..." onChange={event => handleChange(event)}/>
+            <button className={style.button} type='button' onClick={(event) => handleSubmit(event)}>Search</button>
         </div>
     )
 }

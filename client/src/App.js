@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import LandingPage from './components/LandingPage/LandingPage';
 import Create from './components/Create/Create';
 import Detail from './components/Detail/Detail';
+import SearchBar from './components/SearchBar/SearchBar';
 
 
 function App() {

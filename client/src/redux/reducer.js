@@ -7,6 +7,8 @@ import {
     FILTER_BY_TEMPERAMENTS, 
     FILTER_CREATED, 
     ORDER_BY,
+    RESET,
+    RESET_SEARCH
 } from './actions';
 
 const inicialState = {
@@ -29,13 +31,25 @@ const rootReducer = (state = inicialState, action) => {
         case GET_NAME_DOGS:
             return {
                 ...state,
-                allDogs:action.payload
+                allDogs: action.payload
+            }
+
+        case RESET_SEARCH:
+            return {
+                ...state,
+                allDogs: []
             }
 
         case GET_DETAIL:
             return {
                 ...state,
                 detail: action.payload
+            }
+
+        case RESET:
+            return {
+                ...state,
+                detail: []
             }
 
         case POST_DOGS:

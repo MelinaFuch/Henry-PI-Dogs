@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Detail.module.css';
-import { getDetail } from '../../redux/actions';
+import { getDetail, resetDetail } from '../../redux/actions';
 
 const Detail = (props) => {
     const dispatch = useDispatch();
@@ -11,6 +11,7 @@ const Detail = (props) => {
     useEffect(() => {
         const {id} = props.match.params;
         dispatch(getDetail(id));
+        return dispatch(resetDetail());
     }, [dispatch])
 
     const firstLetter = (str) => {
@@ -24,6 +25,7 @@ const Detail = (props) => {
             <Link className={style.link_detail} to='/home'>
                 <button className={style.button}>← Back</button>
             </Link>
+            
             {
                 dogId.length ? 
                 <div className={style.conteinerData}>

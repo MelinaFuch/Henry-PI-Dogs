@@ -26,7 +26,7 @@ const getTemperaments = async (req, res) => {
         const dbTemperament = await Temperament.findAll()
         
         if (!dbTemperament.length) {
-            dbTemperament = totalTemperaments();
+            dbTemperament = await totalTemperaments();
             return res.status(200).send(dbTemperament);
         }
         return res.status(200).send(dbTemperament);

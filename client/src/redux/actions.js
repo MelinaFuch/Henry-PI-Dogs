@@ -9,6 +9,8 @@ export const FILTER_BY_TEMPERAMENTS = 'FILTER_BY_TEMPERAMENTS';
 export const FILTER_CREATED = 'FILTER_CREATED';
 export const ORDER_BY = 'ORDER_BY';
 export const ERROR = 'ERROR';
+export const RESET = 'RESET';
+export const RESET_SEARCH = 'RESET_SEARCH';
 
 export const getAllDogs = () => {
     return async function (dispatch) {
@@ -21,10 +23,7 @@ export const getAllDogs = () => {
                 payload: allDogs
             })
         } catch(error) {
-            return {
-                type: ERROR,
-                payload: error
-            }
+            console.log(error);
         }
     }
 }
@@ -40,9 +39,17 @@ export const getNameDogs = (name) => {
                 payload: nameDogs
             })
         } catch(error) {
-            console.log(error.message);
+            console.log({error: `The dog ${name} not exist`});
         }
-    } 
+    }
+}
+
+export const resetSearch = () => {
+    return  function (dispatch) {
+        return dispatch ({
+            type: RESET_SEARCH
+        })
+    }
 }
 
 export const getDetail = (id) => {
@@ -61,14 +68,22 @@ export const getDetail = (id) => {
     }
 }
 
+export const resetDetail = () => {
+    return  function (dispatch) {
+        return dispatch ({
+            type: RESET
+        })
+    }
+}
+
 export const postDogs = (payload) => {
     return async function () {
         try {
             const response = await axios.post('http://localhost:3001/dogs', payload);
-            console.log(response);
+            console.log('Your dog has been successfully created');
             return response;
         } catch(error) {
-            console.log(error.message);
+            console.log({error: 'Missing data'});
         }
     }
 }

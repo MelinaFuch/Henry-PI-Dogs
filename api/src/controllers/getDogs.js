@@ -5,7 +5,7 @@ const { Race, Temperament } = require ('../db')
 const getApi = async () => {    
     const response = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
     const apiDog = response.data;
-    const dataApi =apiDog?.map(dog => {
+    const dataApi = apiDog?.map(dog => {
         let weight = dog.weight.metric?.split('-');
         let height = dog.weight.metric?.split('-');
 
@@ -64,7 +64,7 @@ const totalDogs = async () => {
     let bdData = await getBd();
 
     let allData = apiData.concat(bdData);
-    return allData;
+    return await allData;
 }
 
 const getDogs = async (req, res) => {
