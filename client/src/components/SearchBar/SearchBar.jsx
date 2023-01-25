@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import style from './SearchBar.module.css';
-import { getAllDogs, getNameDogs, resetSearch } from "../../redux/actions";
+import { getAllDogs, getNameDogs } from "../../redux/actions";
 
 const SearchBar = () => {
     const dispatch = useDispatch();

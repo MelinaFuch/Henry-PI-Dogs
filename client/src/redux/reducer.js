@@ -8,7 +8,6 @@ import {
     FILTER_CREATED, 
     ORDER_BY,
     RESET,
-    RESET_SEARCH
 } from './actions';
 
 const inicialState = {
@@ -32,12 +31,6 @@ const rootReducer = (state = inicialState, action) => {
             return {
                 ...state,
                 allDogs: action.payload
-            }
-
-        case RESET_SEARCH:
-            return {
-                ...state,
-                allDogs: []
             }
 
         case GET_DETAIL:

@@ -4,8 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import store from './redux/store'
+import store from './redux/store';
 import { BrowserRouter } from 'react-router-dom';
+import axios from 'axios';
+
+//axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://back-enddogs-production.up.railway.app/';
 
 ReactDOM.render(
   <Provider store={store}>

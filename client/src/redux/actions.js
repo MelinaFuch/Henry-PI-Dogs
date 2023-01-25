@@ -10,12 +10,11 @@ export const FILTER_CREATED = 'FILTER_CREATED';
 export const ORDER_BY = 'ORDER_BY';
 export const ERROR = 'ERROR';
 export const RESET = 'RESET';
-export const RESET_SEARCH = 'RESET_SEARCH';
 
 export const getAllDogs = () => {
     return async function (dispatch) {
         try {
-            const response = await axios.get('http://localhost:3001/dogs');
+            const response = await axios.get('/dogs');
             const allDogs = response.data;
 
             return dispatch({
@@ -31,7 +30,7 @@ export const getAllDogs = () => {
 export const getNameDogs = (name) => {
     return async function (dispatch) {
         try {
-            const response = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+            const response = await axios.get(`/dogs?name=${name}`);
             const nameDogs = response.data;
 
             return dispatch({
@@ -44,18 +43,10 @@ export const getNameDogs = (name) => {
     }
 }
 
-export const resetSearch = () => {
-    return  function (dispatch) {
-        return dispatch ({
-            type: RESET_SEARCH
-        })
-    }
-}
-
 export const getDetail = (id) => {
     return async function (dispatch) {
         try {
-            const response = await axios.get(`http://localhost:3001/dogs/${id}`);
+            const response = await axios.get(`/dogs/${id}`);
             const dog = response.data;
 
             return dispatch({
@@ -79,7 +70,7 @@ export const resetDetail = () => {
 export const postDogs = (payload) => {
     return async function () {
         try {
-            const response = await axios.post('http://localhost:3001/dogs', payload);
+            const response = await axios.post('/dogs', payload);
             console.log('Your dog has been successfully created');
             return response;
         } catch(error) {
@@ -91,7 +82,7 @@ export const postDogs = (payload) => {
 export const getAllTemperaments = () => {
     return async function (dispatch) {
         try{
-            const response = await axios.get('http://localhost:3001/temperaments');
+            const response = await axios.get('/temperaments');
             const allTemperaments = response.data;
 
             return dispatch ({
