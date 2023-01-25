@@ -20,6 +20,4 @@ function App() {
   );
 }
 
-//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
-
 export default App;
