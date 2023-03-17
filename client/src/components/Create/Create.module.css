@@ -19,7 +19,7 @@
     align-items: flex-end;
     margin: 20px;
     cursor: pointer;
-    border: 1px solid #ee894e; 
+    border: 2px solid #ee894e; 
     background-color: rgb(243, 106, 27); 
     color: #000000;
     font-family: 'Helvetica', sans-serif; 
@@ -30,7 +30,7 @@
 
 .back:hover {
     color: #000000;
-    border: 1px solid #ee894e; 
+    border: 2px solid #ee894e; 
     background-color: #ffb78d;
     cursor: pointer;
     font-family: 'Helvetica', sans-serif; 
@@ -101,7 +101,7 @@
 }
 
 .delete {
-    border: 1px solid #e67f72; 
+    border: 2px solid #e67f72; 
     padding: 5px; 
     background-color: #c53b3b; 
     color: #ffffff; /*color texto*/
@@ -130,7 +130,7 @@
 }
 
 .submit {
-    border: 1px solid #ee894e; 
+    border: 2px solid #ee894e; 
     padding: 10px; /*espacio alrededor texto*/
     background-color: rgb(243, 106, 27); 
     color: #000000; /*color texto*/

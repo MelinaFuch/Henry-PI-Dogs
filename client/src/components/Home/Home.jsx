@@ -12,6 +12,7 @@ import {
 import Dog from '../Dog/Dog';
 import Paginated from "../Paginated/Paginated";
 import SearchBar from "../SearchBar/SearchBar";
+import Loading from "../Loading/Loading";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -117,7 +118,7 @@ const Home = () => {
                 />
 
                 <SearchBar/>
-            {
+            { currentDogs.length ?
                 currentDogs?.map(dog => {
                     return (
                         <Dog
@@ -131,6 +132,7 @@ const Home = () => {
                         />
                     )
                 })
+                : <Loading/>
             }               
             </div>
             <Paginated

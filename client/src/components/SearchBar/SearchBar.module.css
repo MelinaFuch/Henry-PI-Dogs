@@ -8,7 +8,7 @@
     width: max-content;
 }
 .button {
-    border: 1px solid #ee894e; 
+    border: 2px solid #ee894e; 
     padding: 10px; /*espacio alrededor texto*/
     background-color: rgb(243, 106, 27); 
     color: #000000; /*color texto*/
@@ -23,7 +23,7 @@
 
 .button:hover {
     color: #000000;
-    border: 1px solid #e95e0e;
+    border: 2px solid #e95e0e;
     background-color: #ffb78d;
     cursor: pointer;
     font-family: 'Helvetica', sans-serif; 

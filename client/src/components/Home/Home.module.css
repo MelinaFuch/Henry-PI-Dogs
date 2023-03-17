@@ -41,7 +41,7 @@
 .buttons {
     display: inline-flex;
     justify-items: flex-start;
-    border: 1px solid #ee894e; 
+    border: 2px solid #ee894e; 
     padding: 8px; /*espacio alrededor texto*/
     background-color: rgb(243, 106, 27); 
     color: #000000; /*color texto*/
