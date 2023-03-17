@@ -11,7 +11,7 @@ const Dog = ({image, name, temperament, weight_min, weight_max, id }) => {
 
     return (
         <div className={style.conteinerAll}>
-            <Link to={`/dogs/${id}`}>
+            <Link className={style.link_detail} to={`/dogs/${id}`}>
                 <h3 className={style.Name}>{firstLetter(name)}</h3>
                 <img className={style.Image} src={image} alt={name}/>
             </Link>

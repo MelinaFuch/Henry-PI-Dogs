@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Detail.module.css';
 import { getDetail, resetDetail } from '../../redux/actions';
+import Loading from "../Loading/Loading";
 
 const Detail = (props) => {
     const dispatch = useDispatch();
@@ -50,7 +51,8 @@ const Detail = (props) => {
                     <div className={style.conteinerTemp}>
                         <h3 className={style.nameData}>Temperaments:  {!dogId[0].created ? `${dogId[0].temperament} ` : dogId[0].Temperaments?.map(temp => `${temp.name} `)}</h3>
                     </div>
-                </div> : <h2 className={style.loading}>Loading...</h2>
+                </div> : 
+                <Loading/>
             }
         </div>
     )

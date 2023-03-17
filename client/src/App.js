@@ -4,8 +4,9 @@ import Home from './components/Home/Home';
 import LandingPage from './components/LandingPage/LandingPage';
 import Create from './components/Create/Create';
 import Detail from './components/Detail/Detail';
-import SearchBar from './components/SearchBar/SearchBar';
-
+// import SearchBar from './components/SearchBar/SearchBar';
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:3001';
 
 function App() {
   return (

@@ -127,7 +127,7 @@ const Create = () => {
 
     return (
         <div className={style.boxForm}>
-            <Link to='/home'>
+            <Link className={style.link_detail} to='/home'>
                 <button  className={style.back}>← Back</button>
             </Link>
 

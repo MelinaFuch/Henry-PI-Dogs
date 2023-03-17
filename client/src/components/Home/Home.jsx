@@ -26,6 +26,7 @@ const Home = () => {
 
     const indexLastDog = currentPage * dogsPerPage;
     const indexFirstDog = indexLastDog - dogsPerPage;
+    const dogsMax = Math.ceil(allDogs?.length / dogsPerPage);
     const currentDogs = allDogs?.slice(indexFirstDog, indexLastDog);
 
     const paginated = (pageNumber) => {
@@ -110,9 +111,9 @@ const Home = () => {
                     <option className={style.options} value='max'>Maximum weight</option>
                 </select>
                 <Paginated
-                    dogsPerPage={dogsPerPage}
-                    allDogs={allDogs?.length}
-                    paginated={paginated}
+                        dogsMax={dogsMax}
+                        paginated={paginated}
+                        currentPage={currentPage}
                 />
 
                 <SearchBar/>
@@ -133,8 +134,7 @@ const Home = () => {
             }               
             </div>
             <Paginated
-                    dogsPerPage={dogsPerPage}
-                    allDogs={allDogs?.length}
+                    dogsMax={dogsMax}
                     paginated={paginated}
                     currentPage={currentPage}
             />
