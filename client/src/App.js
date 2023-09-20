@@ -7,7 +7,7 @@ import Detail from './components/Detail/Detail';
 // import SearchBar from './components/SearchBar/SearchBar';
 import axios from 'axios';
 // axios.defaults.baseURL = 'http://localhost:3001';
-axios.defaults.baseURL = 'https://henry-pi-dogs-production.up.railway.app/';
+axios.defaults.baseURL = 'https://henry-pi-dogs-production.up.railway.app';
 
 function App() {
   return (
